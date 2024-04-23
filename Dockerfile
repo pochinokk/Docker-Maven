@@ -1,5 +1,9 @@
-FROM maven:3.8.4-openjdk-17-slim
-COPY . /app
+FROM openjdk:11
+ENV MAVEN_HOME /usr/share/maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    rm -rf /var/lib/apt/lists/*
+COPY ./ /app
 WORKDIR /app
-RUN mvn clean install
-CMD ["java", "-jar", "target/your-application.jar"]
+RUN mvn clean package
+CMD ["java", "-jar", "target/my-app.jar"]
