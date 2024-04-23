@@ -1,8 +1,6 @@
 version: '3'
 services:
-  my-app:
-    image: your-image:tag
+  web:
+    build: .
     ports:
-      - "8080:8080"
-    volumes:
-      - ./target:/usr/local/tomcat/webapps
+      - "80:80"
