@@ -1,13 +1,12 @@
-FROM maven:3.8.4-openjdk-11 AS builder
+FROM maven:3.6.3-jdk-11 AS build
 
-COPY ./ /app
-
-WORKDIR /app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
 RUN mvn clean package
 
-FROM openjdk:11
+FROM tomcat:9-jdk11
+COPY --from=build /usr/src/app/target/*.war /usr/local/tomcat/webapps/
 
-COPY --from=builder /app/target/my-project-jar-with-dependencies.jar /app/my-project.jar
 
-CMD ["java", "-jar", "/app/my-project.jar"]
+EXPOSE 8080
