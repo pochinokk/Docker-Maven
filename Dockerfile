@@ -1,3 +1,5 @@
-FROM nginx:alpine
+FROM openjdk:11
 
-COPY ./src/main/webapp /usr/share/nginx/html
+COPY ./target/my-project.jar /app/my-project.jar
+
+CMD ["java", "-jar", "/app/my-project.jar"]
