@@ -1,9 +1,8 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.6.3-openjdk-8-slim
 
-RUN apk add --no-cache maven
-
-COPY src /usr/local/service/src
+COPY . /usr/local/service
 WORKDIR /usr/local/service
+
 RUN mvn package
 
-CMD ["java","-jar","target/docker-service-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+CMD ["java", "-jar", "target/docker-service-1.0-SNAPSHOT-jar-with-dependencies.jar"]
