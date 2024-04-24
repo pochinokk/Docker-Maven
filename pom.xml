@@ -13,7 +13,6 @@
     </properties>
 
     <dependencies>
-        <!-- Зависимость от Java Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  simple-server:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target:/usr/local/service/target
+    command: java -jar /usr/local/service/target/docker-service-1.0-SNAPSHOT-jar-with-dependencies.jar
